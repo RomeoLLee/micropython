@@ -1,0 +1,93 @@
+/*home-assistant控制台json配置*/
+
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hachina.io/0.60/configuration/sensor/systemmonitor",
+  "type": "object",
+  "title": "系统监视器",
+  "brand_logo": "https://www.home-assistant.io/images/supported_brands/system_monitor.png",
+  "doc": {
+    "homeassistant": "https://www.home-assistant.io/components/sensor.systemmonitor/"
+  },
+  "properties": {
+    "platform": {
+      "type": "string",
+      "title": "系统监控",
+      "constant": "systemmonitor"
+    },
+    "resources": {
+      "type": "array",
+      "title": "系统资源",
+      "items": {
+        "type": "object",
+        "title": "系统资源类型参数配置",
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "类型选择",
+            "description": "以下类型需要继续配置相应的arg参数：1、磁盘使用率，磁盘使用量，磁盘剩余量：需要配置路径arg参数；2、网络连接，网络断开，数据包接收，数据包发送，ipv4地址，ipv6地址：需要配置接口arg参数；3、进程状态：需要配置可执行二进制文件arg参数。",
+            "enum": [
+              "disk_use_percent",
+              "disk_use",
+              "disk_free",
+              "memory_use_percent",
+              "memory_use",
+              "memory_free",
+              "swap_use_percent",
+              "swap_use",
+              "swap_free",
+              "load_1m",
+              "load_5m",
+              "load_15m",
+              "network_in",
+              "network_out",
+              "packets_in",
+              "packets_out",
+              "ipv4_address",
+              "ipv6_address",
+              "processor_use",
+              "process",
+              "last_boot",
+              "since_last_boot"
+            ],
+            "enumDesc": [
+              "磁盘使用率",
+              "磁盘使用量",
+              "磁盘剩余量",
+              "内存使用率",
+              "内存使用量",
+              "内存剩余量",
+              "交换内存使用率",
+              "交换内存使用量",
+              "交换内存剩余量",
+              "1分钟系统负载",
+              "5分钟系统负载",
+              "15分钟系统负载",
+              "网络连接",
+              "网络断开",
+              "数据包接收",
+              "数据包发送",
+              "ipv4地址",
+              "ipv6地址",
+              "处理器使用情况",
+              "进程状态",
+              "最近一次启动时间",
+              "自最近一次启动以来的时间"
+            ]
+          },
+          "arg": {
+            "type": "string",
+            "title": "参数设置",
+            "description": "设置监控需要的参数。设置路径arg参数，例如：/home ；设置接口arg参数，例如：eth0 ；设置可执行二进制文件arg参数，例如：octave-cli"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      }
+    }
+  },
+  "required": [
+    "resources"
+  ]
+}
